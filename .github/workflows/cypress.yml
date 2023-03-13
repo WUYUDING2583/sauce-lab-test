@@ -40,14 +40,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Install
         run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Start
-        run: npm start
+      # - name: Build
+      #   run: npm run build
+      # - name: Start
+      #   run: npm start
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5.0.0 # use the explicit version number
-        # with:
-        #   build: npm run build
-        #   start: npm start
+        with:
+          build: npm run build
+          start: npm start
