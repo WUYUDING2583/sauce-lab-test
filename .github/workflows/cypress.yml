@@ -8,32 +8,53 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  saucectl:
+  saucectl-run:
+    name: Run SauceCTL Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm ci
-
+      - name: Cypress with saucectl
+        uses: saucelabs/sauce-connect-action@v2.3.2
+  sauce-connect:
+    name: Start Sauce Connect Proxy
+    needs: saucectl-run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Sauce Connect Proxy Action
         uses: saucelabs/sauce-connect-action@v2.3.2
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
-          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
-          tunnelName: github-action-tunnel
-          tunnelPool: true
-          configFile: ${{ github.workspace }}/sc-configuration/config.yaml
-          build: npm run build
-          start: npm start
+          access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
+          tunnel-id: ${{ github.run_id }}
+  # saucectl:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Cypress with saucectl
-        uses: saucelabs/saucectl-run-action@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+
+  #     - name: Install dependencies
+  #       run: npm ci
+
+  #     - name: Sauce Connect Proxy Action
+  #       uses: saucelabs/sauce-connect-action@v2.3.2
+  #       with:
+  #         username: ${{ secrets.SAUCE_USERNAME }}
+  #         accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
+  #         tunnelName: github-action-tunnel
+  #         tunnelPool: true
+  #         configFile: ${{ github.workspace }}/sc-configuration/config.yaml
+  #         build: npm run build
+  #         start: npm start
+
+  #     - name: Cypress with saucectl
+  #       uses: saucelabs/saucectl-run-action@v3
 
   # cypress-run:
   #   runs-on: ubuntu-latest
