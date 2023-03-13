@@ -8,27 +8,22 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  saucectl-run:
-    name: Run SauceCTL Tests
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Cypress with saucectl
-        uses: saucelabs/saucectl-run-action@v3
-  sauce-connect:
-    name: Start Sauce Connect Proxy
-    needs: saucectl-run
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Sauce Connect Proxy Action
+      - name: Start Sauce Connect Proxy
         uses: saucelabs/sauce-connect-action@v2.3.2
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
           access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
-          tunnel-id: ${{ github.run_id }}
+          tunnelName: github-action-tunnel
+          tunnelPool: true
+          configFile: ${{ github.workspace }}/sc-configuration/config.yaml
+      - name: Run SauceCTL Tests
+        uses: saucelabs/saucectl-run-action@v3
+
   # saucectl:
   #   runs-on: ubuntu-latest
   #   steps:
