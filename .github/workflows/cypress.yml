@@ -23,6 +23,11 @@ jobs:
 
       - name: Sauce Connect Proxy Action
         uses: saucelabs/sauce-connect-action@v2.3.2
+        with:
+          username: ${{ secrets.SAUCE_USERNAME }}
+          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
+          tunnelName: github-action-tunnel
+          # configFile: ${{ github.workspace }}/sc-configuration/config.yaml
 
       - name: Cypress with saucectl
         uses: saucelabs/saucectl-run-action@v3
