@@ -17,7 +17,7 @@ jobs:
         uses: saucelabs/sauce-connect-action@v2.3.2
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
-          access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
+          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
           tunnelName: github-action-tunnel
           tunnelPool: true
           configFile: ${{ github.workspace }}/sc-configuration/config.yaml
