@@ -8,21 +8,37 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  test:
+  cypress-grep:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Start Sauce Connect Proxy
-        uses: saucelabs/sauce-connect-action@v2.3.2
+
+      - uses: actions/setup-node@v3
         with:
-          username: ${{ secrets.SAUCE_USERNAME }}
-          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
-          tunnelName: github-action-tunnel
-          tunnelPool: true
-          configFile: ${{ github.workspace }}/sc-configuration/config.yaml
-      - name: Run SauceCTL Tests
+          node-version: 16
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cypress with Cypress Grep
         uses: saucelabs/saucectl-run-action@v3
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
+  #     - name: Start Sauce Connect Proxy
+  #       uses: saucelabs/sauce-connect-action@v2.3.2
+  #       with:
+  #         username: ${{ secrets.SAUCE_USERNAME }}
+  #         accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
+  #         tunnelName: github-action-tunnel
+  #         tunnelPool: true
+  #         configFile: ${{ github.workspace }}/sc-configuration/config.yaml
+  #     - name: Run SauceCTL Tests
+  #       uses: saucelabs/saucectl-run-action@v3
 
   # saucectl:
   #   runs-on: ubuntu-latest
