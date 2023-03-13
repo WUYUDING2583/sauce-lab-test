@@ -29,12 +29,11 @@ jobs:
           tunnelName: github-action-tunnel
           tunnelPool: true
           configFile: ${{ github.workspace }}/sc-configuration/config.yaml
+          build: npm run build
+          start: npm start
 
       - name: Cypress with saucectl
         uses: saucelabs/saucectl-run-action@v3
-        with:
-          build: npm run build
-          start: npm start
 
   # cypress-run:
   #   runs-on: ubuntu-latest
