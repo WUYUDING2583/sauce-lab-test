@@ -26,8 +26,8 @@ jobs:
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
           accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
-          tunnelName: github-action-tunnel
-          configFile: ${{ github.workspace }}/sc-configuration/config.yaml
+          tunnelName: oauth-yuding-0a3a7_tunnel_name
+          # configFile: ${{ github.workspace }}/sc-configuration/config.yaml
 
       - name: Cypress with Cypress Grep
         uses: saucelabs/saucectl-run-action@v3
