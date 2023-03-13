@@ -27,7 +27,8 @@ jobs:
           username: ${{ secrets.SAUCE_USERNAME }}
           accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
           tunnelName: github-action-tunnel
-          # configFile: ${{ github.workspace }}/sc-configuration/config.yaml
+          tunnelPool: true
+          configFile: ${{ github.workspace }}/sc-configuration/config.yaml
 
       - name: Cypress with saucectl
         uses: saucelabs/saucectl-run-action@v3
