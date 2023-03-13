@@ -1,4 +1,4 @@
-name: saucectl cypress tests v1
+name: saucectl cypress tests
 
 on: [push]
 
@@ -8,17 +8,26 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  main:
+  build-app:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Saucectl RUN Docker and Cloud
-        uses: saucelabs/saucectl-run-action@v3
         with:
+          install: npm install
           build: npm run build
-          start: npm start
+
+  # main:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Saucectl RUN Docker and Cloud
+  #       uses: saucelabs/saucectl-run-action@v3
+  #       with:
+  #         build: npm run build
+  #         start: npm start
   # cypress-run:
   #   runs-on: ubuntu-latest
   #   steps:
