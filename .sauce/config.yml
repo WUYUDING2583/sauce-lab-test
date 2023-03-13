@@ -5,8 +5,8 @@ defaults:
   mode: sauce
 sauce:
   region: us-west-1
-  # tunnel:
-  #   name: oauth-yuding-0a3a7_tunnel_name
+  tunnel:
+    name: test_tunnel_name
   concurrency: 10 # Controls how many suites are executed at the same time.
   metadata:
     tags:
