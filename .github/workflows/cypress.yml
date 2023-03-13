@@ -21,12 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build app
-        run: npm run build
-
-      - name: Start app
-        run: npm start
-
       - name: Sauce Connect Proxy Action
         uses: saucelabs/sauce-connect-action@v2.3.2
         with:
@@ -37,6 +31,9 @@ jobs:
 
       - name: Cypress with saucectl
         uses: saucelabs/saucectl-run-action@v3
+        with:
+          build: npm run build
+          start: npm start
 
   # build-app:
   #   runs-on: ubuntu-latest
