@@ -1,2 +1,5 @@
 ---
-fast-fail-regexps: ".*adobe.com"
+user: "oauth-yuding-0a3a7"
+api-key: "a8534617-4783-49d2-a254-8ac4a692e0b3"
+region: "us-west"
+tunnel-name: "oauth-yuding-0a3a7_tunnel_name"
