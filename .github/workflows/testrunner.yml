@@ -37,13 +37,13 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-      - name: Run Build
-        env:
-          CI: false
-        run: |
-          npm run build
-      - name: Start
-        run: npm start
+      # - name: Run Build
+      #   env:
+      #     CI: false
+      #   run: |
+      #     npm run build
+      # - name: Start
+      #   run: npm start
       - uses: saucelabs/sauce-connect-action@v2
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
