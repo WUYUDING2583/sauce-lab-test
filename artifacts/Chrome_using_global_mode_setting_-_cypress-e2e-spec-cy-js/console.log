@@ -1,0 +1,78 @@
+Sauce Cypress Runner 10.0.0
+Preparing npm environment
+
+Couldn't find tsconfig.json. tsconfig-paths will be skipped
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        12.3.0                                                                         │
+  │ Browser:        Custom Chrome 111                                                              │
+  │ Node Version:   v16.19.0 (D:\sauce-cypress-runner\10.0.0\bundle\node.exe)                      │
+  │ Specs:          1 found (spec.cy.js)                                                           │
+  │ Searched:       cypress/e2e/spec.cy.js                                                         │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  spec.cy.js                                                                      (1 of 1)
+
+
+  template spec
+    1) passes
+  2 |   it("passes", () => {
+  3 |     cy.visit("/");
+> 4 |     cy.contains("Learn React");
+    |        ^
+  5 |   });
+  6 | });
+  7 | 
+Timed out retrying after 4000ms: Expected to find content: 'Learn React' but never did.
+
+
+  0 passing (5s)
+  1 failing
+
+  1) template spec
+       passes:
+     AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Learn React' but never did.
+      at Context.eval (webpack:///./cypress/e2e/spec.cy.js:4:7)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      0                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  1                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     4 seconds                                                                        │
+  │ Spec Ran:     spec.cy.js                                                                       │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  D:\sauce-cypress-runner\10.0.0\bundle\__project__\__assets__\spec.cy.js\template     (1920x962)
+      spec -- passes (failed).png                                                                   
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ×  spec.cy.js                               00:04        1        -        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ×  1 of 1 failed (100%)                     00:04        1        -        1        -        -  
+
