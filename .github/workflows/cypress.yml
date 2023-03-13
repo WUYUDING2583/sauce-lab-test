@@ -31,6 +31,8 @@ jobs:
 
       - name: Cypress with Cypress Grep
         uses: saucelabs/saucectl-run-action@v3
+        with:
+          config-file: .sauce/config.yml
   # test:
   #   runs-on: ubuntu-latest
   #   steps:
