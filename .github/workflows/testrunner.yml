@@ -52,7 +52,6 @@ jobs:
       #   run: |
       #     npm start
       - name: Cypress with Cypress Grep
-        run: |
-          npm start & saucelabs/saucectl-run-action@v3
-        # uses: saucelabs/saucectl-run-action@v3
-        # with:
+        uses: saucelabs/saucectl-run-action@v3
+        with:
+          start: npm start
