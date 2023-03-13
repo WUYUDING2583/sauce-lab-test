@@ -32,7 +32,7 @@ jobs:
       - name: Cypress with Cypress Grep
         uses: saucelabs/saucectl-run-action@v3
         with:
-          config-file: .sauce/config.yml
+          config-file: ${{ github.workspace }}/.sauce/config.yml
   # test:
   #   runs-on: ubuntu-latest
   #   steps:
