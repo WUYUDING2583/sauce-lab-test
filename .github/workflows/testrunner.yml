@@ -42,19 +42,19 @@ jobs:
       #     CI: false
       #   run: |
       #     npm run build
-      # - name: Start
-      #   run: npm start
+      - name: Start
+        run: npm start & npx wait-on --timeout 60000
       - uses: saucelabs/sauce-connect-action@v2
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
           accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
-          tunnelName: test_tunnel_name
+          tunnelName: oauth-yuding-0a3a7_tunnel_name
           # configFile: ${{ github.workspace }}/sc-configuration/config.yaml
       # - name: Start
       #   run: |
       #     npm start
       - name: Cypress with Cypress Grep
         uses: saucelabs/saucectl-run-action@v3
-        with:
-          build: npm run build
-          start: npm start
+        # with:
+        #   build: npm run build
+        #   start: npm start
